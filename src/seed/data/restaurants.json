@@ -1,0 +1,62 @@
+[
+  {
+    "id": "r1",
+    "name": "Saravana Bhavan",
+    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3NUq012x3G5MY-elVzMCLe9t3j1QQwApm303ky_YGzkStiOIb6CaY8WVm&s=10",
+    "cuisine": "Tiffins \u00b7 South Indian",
+    "rating": 4.6,
+    "deliveryTimeMinutes": 25,
+    "deliveryFee": 25,
+    "minOrderAmount": 100
+  },
+  {
+    "id": "r2",
+    "name": "Murugan Idli Shop",
+    "imageUrl": "https://b.zmtcdn.com/data/pictures/chains/1/65381/fb4f3b8616f519e630063fa5d69eb532.jpg?fit=around|960:500&crop=960:500;*",
+    "cuisine": "Tiffins \u00b7 Idli Specialist",
+    "rating": 4.5,
+    "deliveryTimeMinutes": 20,
+    "deliveryFee": 20,
+    "minOrderAmount": 80
+  },
+  {
+    "id": "r3",
+    "name": "Dosa Junction",
+    "imageUrl": "https://media-assets.swiggy.com/swiggy/image/upload/f_auto",
+    "cuisine": "Dosa \u00b7 South Indian",
+    "rating": 4.7,
+    "deliveryTimeMinutes": 25,
+    "deliveryFee": 25,
+    "minOrderAmount": 100
+  },
+  {
+    "id": "r4",
+    "name": "Anjappar Chettinad",
+    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBHz7X7A071BTtupoRbuKaAOuyaP83MPvmGePqdb1jYGkfzNs4vjJ8K0-F&s=10",
+    "cuisine": "Chettinad \u00b7 Non-veg & Veg",
+    "rating": 4.6,
+    "deliveryTimeMinutes": 35,
+    "deliveryFee": 35,
+    "minOrderAmount": 150
+  },
+  {
+    "id": "r5",
+    "name": "Grand Sweets & Snacks",
+    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTINOAskMGYNtp51CS65Bjv7frBOIkzRabGKyMeY7J6EPG_-hviDFthgwg&s=10",
+    "cuisine": "Sweets \u00b7 Traditional",
+    "rating": 4.8,
+    "deliveryTimeMinutes": 20,
+    "deliveryFee": 20,
+    "minOrderAmount": 60
+  },
+  {
+    "id": "r6",
+    "name": "Cafe Madras",
+    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScxE4tfTzXNErzDEXO8WFjerhAtVEVDzUeElp1mei4Sw&s=10",
+    "cuisine": "Beverages \u00b7 Filter Coffee",
+    "rating": 4.7,
+    "deliveryTimeMinutes": 15,
+    "deliveryFee": 15,
+    "minOrderAmount": 40
+  }
+]

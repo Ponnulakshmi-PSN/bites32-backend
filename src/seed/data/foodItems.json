@@ -1,0 +1,233 @@
+[
+  {
+    "id": "f1",
+    "name": "Idli (2 pcs)",
+    "description": "Steamed rice cakes served with sambar and coconut chutney.",
+    "price": 40,
+    "imageUrl": "https://cdn.dotpe.in/longtail/store-items/8088498/W8J68rpZ.jpeg",
+    "category": "Tiffins",
+    "restaurantId": "r1",
+    "rating": 4.5,
+    "prepTimeMinutes": 10
+  },
+  {
+    "id": "f2",
+    "name": "Medu Vada (2 pcs)",
+    "description": "Steamed rice cakes served with sambar and coconut chutney.",
+    "price": 45,
+    "imageUrl": "https://static.vecteezy.com/system/resources/thumbnails/071/434/640/small/realistic-indian-medu-vada-served-with-sambar-and-chutney-traditional-south-indian-breakfast-photo.jpg",
+    "category": "Tiffins",
+    "restaurantId": "r1",
+    "rating": 4.6,
+    "prepTimeMinutes": 12
+  },
+  {
+    "id": "f3",
+    "name": "Sambar Rice",
+    "description": "Steamed rice mixed with tangy lentil and vegetable sambar.",
+    "price": 90,
+    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgIcAO0ICl-c2bjIXbXeiNhtNjpsy_wJ7CeY6PU6dgoh0dDV6aTmaMDOmb&s=10",
+    "category": "Rice Meals",
+    "restaurantId": "r1",
+    "rating": 4.5,
+    "prepTimeMinutes": 15
+  },
+  {
+    "id": "f4",
+    "name": "Curd Rice",
+    "description": "Comforting rice mixed with fresh curd",
+    "price": 70,
+    "imageUrl": "https://thumbs.dreamstime.com/b/south-indian-dish-curd-rice-also-called-yogurt-originating-india-word-english-refers-to-unsweetened-probiotic-195566276.jpg",
+    "category": "Rice Meals",
+    "restaurantId": "r1",
+    "rating": 4.4,
+    "prepTimeMinutes": 10
+  },
+  {
+    "id": "f5",
+    "name": "Lemon Rice",
+    "description": "Tangy rice tossed with lemon",
+    "price": 75,
+    "imageUrl": "https://www.spiceupthecurry.com/wp-content/uploads/2012/07/indian-lemon-rice-2.jpg",
+    "category": "Rice Meals",
+    "restaurantId": "r1",
+    "rating": 4.3,
+    "prepTimeMinutes": 10
+  },
+  {
+    "id": "f6",
+    "name": "Ven Pongal",
+    "description": "Savoury rice and moong dal porridge",
+    "price": 50,
+    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3-1IIK6Y1sHWUeX23tBogiqTxo7yOZNqkgbs8eV6cj-5qDwBaMM46WZQA&s=10",
+    "category": "Tiffins",
+    "restaurantId": "r2",
+    "rating": 4.4,
+    "prepTimeMinutes": 15
+  },
+  {
+    "id": "f7",
+    "name": "Rava Upma",
+    "description": "Semolina cooked with vegetables",
+    "price": 45,
+    "imageUrl": "https://www.cubesnjuliennes.com/wp-content/uploads/2020/06/Best-South-Indian-Rava-Upma-Recipe.jpg",
+    "category": "Tiffins",
+    "restaurantId": "r2",
+    "rating": 4.2,
+    "prepTimeMinutes": 12
+  },
+  {
+    "id": "f8",
+    "name": "Idiyappam (String Hoppers)",
+    "description": "Steamed rice noodles served with coconut milk or vegetable stew.",
+    "price": 60,
+    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfirhNlddeBrU5s3OAJCCEBp4sxwbLyBeNGlSHzJ60iqHGShixEekpaG4&s=10",
+    "category": "Tiffins",
+    "restaurantId": "r2",
+    "rating": 4.5,
+    "prepTimeMinutes": 15
+  },
+  {
+    "id": "f9",
+    "name": "Plain Dosa",
+    "description": "Crispy rice and lentil crepe served with sambar and chutney.",
+    "price": 50,
+    "imageUrl": "https://static.vecteezy.com/system/resources/thumbnails/043/122/390/small/masala-dosa-thali-set-with-sabji-and-chutney-served-in-dish-isolated-on-wooden-table-top-view-of-indian-spicy-food-photo.jpg",
+    "category": "Dosa",
+    "restaurantId": "r3",
+    "rating": 4.5,
+    "prepTimeMinutes": 15
+  },
+  {
+    "id": "f10",
+    "name": "Masala Dosa",
+    "description": "Crispy dosa filled with spiced potato masala",
+    "price": 70,
+    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVzfVXY7B3s3cBa1w_GXomri9nu7uiLSQ1V818N7ufudwfIny7nQPmo54&s=10",
+    "category": "Dosa",
+    "restaurantId": "r3",
+    "rating": 4.8,
+    "prepTimeMinutes": 18
+  },
+  {
+    "id": "f11",
+    "name": "Rava Dosa",
+    "description": "Thin",
+    "price": 80,
+    "imageUrl": "https://i0.wp.com/www.tomatoblues.com/wp-content/uploads/2012/02/rava-onion-dosa-1-scaled.jpg?fit=1696%2C2560&ssl=1",
+    "category": "Dosa",
+    "restaurantId": "r3",
+    "rating": 4.6,
+    "prepTimeMinutes": 18
+  },
+  {
+    "id": "f12",
+    "name": "Onion Uttapam",
+    "description": "Thick rice pancake topped with onions and green chillies.",
+    "price": 75,
+    "imageUrl": "https://thumbs.dreamstime.com/b/onion-dosa-typically-south-indian-pancake-typical-food-rich-carbohydrates-proteins-as-name-suggests-main-38491542.jpg",
+    "category": "Dosa",
+    "restaurantId": "r3",
+    "rating": 4.3,
+    "prepTimeMinutes": 15
+  },
+  {
+    "id": "f13",
+    "name": "Chettinad Chicken Curry",
+    "description": "Fiery chicken curry cooked in a spicy Chettinad masala.",
+    "price": 220,
+    "imageUrl": "https://png.pngtree.com/png-vector/20240515/ourmid/pngtree-authentic-indian-chicken-curry-creamy-desi-quick-and-easy-isolated-with-png-image_12471014.png",
+    "category": "Chettinad",
+    "restaurantId": "r4",
+    "rating": 4.7,
+    "prepTimeMinutes": 30
+  },
+  {
+    "id": "f14",
+    "name": "Mutton Chukka",
+    "description": "Slow-cooked mutton tossed in a dry Chettinad pepper masala.",
+    "price": 260,
+    "imageUrl": "https://i.ytimg.com/vi/zVWi00sECJo/maxresdefault.jpg",
+    "category": "Chettinad",
+    "restaurantId": "r4",
+    "rating": 4.6,
+    "prepTimeMinutes": 35
+  },
+  {
+    "id": "f15",
+    "name": "Chicken Dum Biryani",
+    "description": "Aromatic rice dish layered with spiced chicken and cooked to perfection.",
+    "price": 150,
+    "imageUrl": "https://t4.ftcdn.net/jpg/12/36/95/09/360_F_1236950902_WdmHKltisVpaQ3aJnfN5ag0IcAuKDNqs.jpg",
+    "category": "Chettinad",
+    "restaurantId": "r4",
+    "rating": 4.4,
+    "prepTimeMinutes": 20
+  },
+  {
+    "id": "f16",
+    "name": "Mysore Pak",
+    "description": "Rich",
+    "price": 60,
+    "imageUrl": "https://www.shreemithai.com/cdn/shop/products/spl-mysore-pak-206182.jpg?v=1707820107",
+    "category": "Sweets",
+    "restaurantId": "r5",
+    "rating": 4.8,
+    "prepTimeMinutes": 5
+  },
+  {
+    "id": "f17",
+    "name": "Payasam",
+    "description": "Traditional South Indian dessert made with milk",
+    "price": 65,
+    "imageUrl": "https://www.sharmispassions.com/wp-content/uploads/2023/10/semiya-payasam1-500x500.jpg",
+    "category": "Sweets",
+    "restaurantId": "r5",
+    "rating": 4.7,
+    "prepTimeMinutes": 10
+  },
+  {
+    "id": "f18",
+    "name": "Gulaab Jamun",
+    "description": "Sweet semolina pudding flavoured with saffron and cardamom.",
+    "price": 55,
+    "imageUrl": "https://t4.ftcdn.net/jpg/10/17/65/75/360_F_1017657553_BFjfgC9jaR5KFxJKfQZxVySUnYZ211bR.jpg",
+    "category": "Sweets",
+    "restaurantId": "r5",
+    "rating": 4.5,
+    "prepTimeMinutes": 10
+  },
+  {
+    "id": "f19",
+    "name": "Filter Coffee",
+    "description": "Strong South Indian coffee brewed with chicory",
+    "price": 30,
+    "imageUrl": "https://t4.ftcdn.net/jpg/18/94/65/57/360_F_1894655778_hiWbRPQJEdAYhBB4lmDD87nADsHdGyWG.jpg",
+    "category": "Beverages",
+    "restaurantId": "r6",
+    "rating": 4.9,
+    "prepTimeMinutes": 5
+  },
+  {
+    "id": "f20",
+    "name": "Masala Chai",
+    "description": "Spiced Indian tea brewed with cardamom",
+    "price": 25,
+    "imageUrl": "https://media.istockphoto.com/id/1336601313/photo/top-view-of-indian-herbal-masala-chai-or-traditional-beverage-tea-with-milk-and-spices-kerala.jpg?s=612x612&w=0&k=20&c=txjXqXtu3_PcA0ztNxyNVXJ-YziORr2XnuHWIriNEKk=",
+    "category": "Beverages",
+    "restaurantId": "r6",
+    "rating": 4.6,
+    "prepTimeMinutes": 5
+  },
+  {
+    "id": "f21",
+    "name": "Neer Mor (Spiced Buttermilk)",
+    "description": "Chilled spiced buttermilk with curry leaves",
+    "price": 35,
+    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSF5SJN1sBWXR3M3Xp-pd4wupqgEmdN1A9UOjjoYYCTuXWMHootF_z_iv-e&s=10",
+    "category": "Beverages",
+    "restaurantId": "r6",
+    "rating": 4.4,
+    "prepTimeMinutes": 5
+  }
+]
