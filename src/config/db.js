@@ -1,5 +1,7 @@
 const { Sequelize } = require('sequelize');
 
+const useSSL = process.env.DB_SSL === 'true';
+
 const sequelize = new Sequelize(
   process.env.DB_NAME,
   process.env.DB_USER,
@@ -10,8 +12,16 @@ const sequelize = new Sequelize(
     dialect: 'postgres',
     logging: process.env.NODE_ENV === 'development' ? console.log : false,
     define: {
-      underscored: true, // created_at / updated_at instead of camelCase columns
+      underscored: true,
     },
+    dialectOptions: useSSL
+      ? {
+          ssl: {
+            require: true,
+            rejectUnauthorized: false, // Render's cert isn't in Node's default CA store
+          },
+        }
+      : {},
   }
 );
 
