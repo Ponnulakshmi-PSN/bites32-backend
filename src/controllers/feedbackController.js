@@ -77,4 +77,13 @@ const deleteFeedback = asyncHandler(async (req, res) => {
   res.json({ success: true, message: 'Feedback removed' });
 });
 
-module.exports = { createFeedback, getFeedback, deleteFeedback };
+const getMyFeedback = asyncHandler(async (req, res) => {
+  const feedback = await Feedback.findAll({
+    where: { userId: req.user.id },
+    include: [Restaurant, FoodItem], // default alias = model name (Restaurant / FoodItem)
+    order: [['createdAt', 'DESC']],
+  });
+  res.json({ success: true, feedback });
+});
+
+module.exports = { createFeedback, getFeedback, deleteFeedback,getMyFeedback };
