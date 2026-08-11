@@ -1,0 +1,67 @@
+[
+  {
+    "code": "WELCOME10",
+    "description": "10% off up to ₹50 for new users",
+    "discountType": "percentage",
+    "discountValue": 10,
+    "minOrderAmount": 0,
+    "maxDiscountAmount": 50,
+    "usageLimit": null,
+    "usageCount": 0,
+    "perUserLimit": 1,
+    "isActive": true,
+    "expiresAt": null
+  },
+  {
+    "code": "FLAT50",
+    "description": "Flat ₹50 off on orders above ₹200",
+    "discountType": "flat",
+    "discountValue": 50,
+    "minOrderAmount": 200,
+    "maxDiscountAmount": null,
+    "usageLimit": null,
+    "usageCount": 0,
+    "perUserLimit": 2,
+    "isActive": true,
+    "expiresAt": null
+  },
+  {
+    "code": "SAVE100",
+    "description": "Save 15% up to ₹100 on orders above ₹500",
+    "discountType": "percentage",
+    "discountValue": 15,
+    "minOrderAmount": 500,
+    "maxDiscountAmount": 100,
+    "usageLimit": 500,
+    "usageCount": 0,
+    "perUserLimit": 1,
+    "isActive": true,
+    "expiresAt": "2027-12-31T23:59:59.000Z"
+  },
+  {
+    "code": "FREESHIP",
+    "description": "Flat ₹40 off on orders above ₹150",
+    "discountType": "flat",
+    "discountValue": 40,
+    "minOrderAmount": 150,
+    "maxDiscountAmount": null,
+    "usageLimit": 1000,
+    "usageCount": 0,
+    "perUserLimit": 1,
+    "isActive": true,
+    "expiresAt": null
+  },
+  {
+    "code": "SUMMER20",
+    "description": "20% off up to ₹80 for summer special",
+    "discountType": "percentage",
+    "discountValue": 20,
+    "minOrderAmount": 100,
+    "maxDiscountAmount": 80,
+    "usageLimit": 300,
+    "usageCount": 0,
+    "perUserLimit": 1,
+    "isActive": true,
+    "expiresAt": "2027-09-30T23:59:59.000Z"
+  }
+]

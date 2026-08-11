@@ -3,9 +3,11 @@ require("dotenv").config();
 const { sequelize } = require("../config/db");
 const Restaurant = require("../models/Restaurant");
 const FoodItem = require("../models/FoodItem");
+const Coupon = require("../models/Coupon");
 
 const restaurants = require("./data/restaurants.json");
 const foodItems = require("./data/foodItems.json");
+const coupons = require("./data/coupons.json");
 
 async function seedDatabase() {
   try {
@@ -45,6 +47,10 @@ async function seedDatabase() {
     }));
 
     await FoodItem.bulkCreate(foodData);
+
+    // --- Seed coupons from JSON file for local development ---
+    await Coupon.destroy({ where: {}, force: true });
+    await Coupon.bulkCreate(coupons);
 
     console.log("✅ Database seeded successfully");
   } catch (err) {

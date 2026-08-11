@@ -32,6 +32,7 @@ app.use('/api/cart', cartRoutes); // cart_screen
 app.use('/api/orders', orderRoutes); // checkout_screen, order_tracking_screen
 app.use('/api/feedback', feedbackRoutes); // feedback_screen
 app.use('/api/favorites', require('./routes/favoriteRoutes')); // favorite_screen
+app.use('/api/coupons', require('./routes/couponRoutes'));
 
 app.use(notFound);
 app.use(errorHandler);

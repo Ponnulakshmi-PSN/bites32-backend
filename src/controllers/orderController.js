@@ -35,7 +35,7 @@ const simulateOrderProgress = (orderId) => {
 // @route   POST /api/orders
 // @access  Private
 const placeOrder = asyncHandler(async (req, res) => {
-  const { deliveryAddress, paymentMethod } = req.body;
+const { deliveryAddress, paymentMethod, couponCode } = req.body;
 
   const cart = await Cart.findOne({
     where: { userId: req.user.id },
@@ -54,6 +54,28 @@ const placeOrder = asyncHandler(async (req, res) => {
   const deliveryFee = req.body.deliveryFee ?? 0;
   const tax = req.body.tax ?? Math.round(subtotal * 0.05 * 100) / 100;
   const discount = req.body.discount ?? 0;
+
+let appliedCoupon = null;
+
+if (couponCode) {
+  appliedCoupon = await Coupon.findOne({ where: { code: couponCode.trim().toUpperCase() } });
+  if (appliedCoupon) {
+    discount = appliedCoupon.discountType === 'percentage'
+      ? (subtotal * appliedCoupon.discountValue) / 100
+      : appliedCoupon.discountValue;
+    if (appliedCoupon.maxDiscountAmount) discount = Math.min(discount, appliedCoupon.maxDiscountAmount);
+    discount = Math.min(discount, subtotal);
+  }
+}
+
+// Inside the transaction, after creating newOrder, add:
+if (appliedCoupon) {
+  await CouponRedemption.create(
+    { userId: req.user.id, couponId: appliedCoupon.id, orderId: newOrder.id },
+    { transaction: t }
+  );
+  await appliedCoupon.increment('usageCount', { transaction: t });
+}
   const total = subtotal + deliveryFee + tax - discount;
 
   const order = await sequelize.transaction(async (t) => {

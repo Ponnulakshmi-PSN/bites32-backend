@@ -7,6 +7,9 @@ const { Cart, CartItem } = require('./Cart');
 const { Order, OrderItem } = require('./Order');
 const Feedback = require('./Feedback');
 const Favorite = require('./Favorite');
+const Coupon = require('./Coupon');
+const CouponRedemption = require('./CouponRedemption');
+
 
 // --- User <-> Address (1:many) ---
 User.hasMany(Address, { foreignKey: 'userId', onDelete: 'CASCADE' });
@@ -79,6 +82,12 @@ Favorite.belongsTo(User, { foreignKey: 'userId' });
 Restaurant.hasMany(Favorite, { foreignKey: 'restaurantId', onDelete: 'CASCADE' });
 Favorite.belongsTo(Restaurant, { foreignKey: 'restaurantId', as: 'restaurant' });
 
+User.hasMany(CouponRedemption, { foreignKey: 'userId' });
+CouponRedemption.belongsTo(User, { foreignKey: 'userId' });
+
+Coupon.hasMany(CouponRedemption, { foreignKey: 'couponId' });
+CouponRedemption.belongsTo(Coupon, { foreignKey: 'couponId' });
+
 module.exports = {
   sequelize,
   User,
@@ -91,4 +100,6 @@ module.exports = {
   OrderItem,
   Feedback,
   Favorite,
+  Coupon,
+  CouponRedemption,
 };
