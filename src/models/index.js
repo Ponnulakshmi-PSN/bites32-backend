@@ -9,6 +9,7 @@ const Feedback = require('./Feedback');
 const Favorite = require('./Favorite');
 const Coupon = require('./Coupon');
 const CouponRedemption = require('./CouponRedemption');
+const Notification = require('./Notification');
 
 
 // --- User <-> Address (1:many) ---
@@ -88,6 +89,9 @@ CouponRedemption.belongsTo(User, { foreignKey: 'userId' });
 Coupon.hasMany(CouponRedemption, { foreignKey: 'couponId' });
 CouponRedemption.belongsTo(Coupon, { foreignKey: 'couponId' });
 
+User.hasMany(Notification, { foreignKey: 'userId', onDelete: 'CASCADE' });
+Notification.belongsTo(User, { foreignKey: 'userId' });
+
 module.exports = {
   sequelize,
   User,
@@ -102,4 +106,5 @@ module.exports = {
   Favorite,
   Coupon,
   CouponRedemption,
+  Notification,
 };

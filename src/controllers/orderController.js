@@ -1,11 +1,23 @@
 const asyncHandler = require('express-async-handler');
-const { sequelize, Order, OrderItem, Cart, CartItem, Restaurant } = require('../models');
+const { sequelize, Order, OrderItem, Cart, CartItem, Restaurant, Coupon, CouponRedemption } = require('../models');
+const { notifyUser } = require('../utils/notify');
+
+const statusMessages = (restaurantName) => ({
+  preparing: {
+    title: 'Order Confirmed',
+    message: `${restaurantName ? restaurantName + ' is preparing' : 'Your order is being prepared'} your order.`,
+  },
+  out_for_delivery: {
+    title: 'Out for Delivery',
+    message: `Your order from ${restaurantName || 'the restaurant'} is on the way!`,
+  },
+  delivered: {
+    title: 'Order Delivered',
+    message: `Enjoy your meal from ${restaurantName || 'the restaurant'}!`,
+  },
+});
 
 // TEMPORARY: simulates order progression for demo/testing purposes.
-// Timeouts are in-memory only — they're lost on server restart, and this
-// is NOT tied to any real kitchen or delivery event. Remove this once a
-// real status-update mechanism (admin panel, delivery partner app, etc.)
-// exists — updateOrderStatus() below is the real endpoint for that.
 const simulateOrderProgress = (orderId) => {
   const stages = [
     { status: 'preparing', delayMs: 15_000 },
@@ -16,13 +28,26 @@ const simulateOrderProgress = (orderId) => {
   stages.forEach(({ status, delayMs }) => {
     setTimeout(async () => {
       try {
-        const order = await Order.findByPk(orderId);
-        // Don't override if it was cancelled in the meantime
+        const order = await Order.findByPk(orderId, { include: [Restaurant] });
         if (!order || order.status === 'cancelled') return;
+
         order.status = status;
         order.statusHistory = [...(order.statusHistory || []), { status, note: 'simulated', timestamp: new Date() }];
         if (status === 'delivered') order.deliveredAt = new Date();
         await order.save();
+
+        const restaurantName = order.Restaurant?.name;
+        const messages = statusMessages(restaurantName);
+        if (messages[status]) {
+          notifyUser({
+            userId: order.userId,
+            type: 'order_update',
+            title: messages[status].title,
+            message: messages[status].message,
+            referenceId: order.id,
+          });
+        }
+
         console.log(`[simulated] Order ${orderId} -> ${status}`);
       } catch (err) {
         console.error(`[simulated] Failed to update order ${orderId}:`, err.message);
@@ -35,7 +60,7 @@ const simulateOrderProgress = (orderId) => {
 // @route   POST /api/orders
 // @access  Private
 const placeOrder = asyncHandler(async (req, res) => {
-const { deliveryAddress, paymentMethod, couponCode } = req.body;
+  const { deliveryAddress, paymentMethod, couponCode } = req.body;
 
   const cart = await Cart.findOne({
     where: { userId: req.user.id },
@@ -53,29 +78,20 @@ const { deliveryAddress, paymentMethod, couponCode } = req.body;
 
   const deliveryFee = req.body.deliveryFee ?? 0;
   const tax = req.body.tax ?? Math.round(subtotal * 0.05 * 100) / 100;
-  const discount = req.body.discount ?? 0;
+  let discount = req.body.discount ?? 0;
 
-let appliedCoupon = null;
-
-if (couponCode) {
-  appliedCoupon = await Coupon.findOne({ where: { code: couponCode.trim().toUpperCase() } });
-  if (appliedCoupon) {
-    discount = appliedCoupon.discountType === 'percentage'
-      ? (subtotal * appliedCoupon.discountValue) / 100
-      : appliedCoupon.discountValue;
-    if (appliedCoupon.maxDiscountAmount) discount = Math.min(discount, appliedCoupon.maxDiscountAmount);
-    discount = Math.min(discount, subtotal);
+  let appliedCoupon = null;
+  if (couponCode) {
+    appliedCoupon = await Coupon.findOne({ where: { code: couponCode.trim().toUpperCase() } });
+    if (appliedCoupon) {
+      discount = appliedCoupon.discountType === 'percentage'
+        ? (subtotal * appliedCoupon.discountValue) / 100
+        : appliedCoupon.discountValue;
+      if (appliedCoupon.maxDiscountAmount) discount = Math.min(discount, appliedCoupon.maxDiscountAmount);
+      discount = Math.min(discount, subtotal);
+    }
   }
-}
 
-// Inside the transaction, after creating newOrder, add:
-if (appliedCoupon) {
-  await CouponRedemption.create(
-    { userId: req.user.id, couponId: appliedCoupon.id, orderId: newOrder.id },
-    { transaction: t }
-  );
-  await appliedCoupon.increment('usageCount', { transaction: t });
-}
   const total = subtotal + deliveryFee + tax - discount;
 
   const order = await sequelize.transaction(async (t) => {
@@ -108,6 +124,14 @@ if (appliedCoupon) {
       })),
       { transaction: t }
     );
+
+    if (appliedCoupon) {
+      await CouponRedemption.create(
+        { userId: req.user.id, couponId: appliedCoupon.id, orderId: newOrder.id },
+        { transaction: t }
+      );
+      await appliedCoupon.increment('usageCount', { transaction: t });
+    }
 
     await CartItem.destroy({ where: { cartId: cart.id }, transaction: t });
     cart.restaurantId = null;
@@ -164,7 +188,7 @@ const getOrderById = asyncHandler(async (req, res) => {
 // @route   PUT /api/orders/:id/status
 // @access  Private/Admin/Owner
 const updateOrderStatus = asyncHandler(async (req, res) => {
-  const order = await Order.findByPk(req.params.id);
+  const order = await Order.findByPk(req.params.id, { include: [Restaurant] });
   if (!order) {
     res.status(404);
     throw new Error('Order not found');
@@ -175,6 +199,18 @@ const updateOrderStatus = asyncHandler(async (req, res) => {
     order.status = status;
     order.statusHistory = [...(order.statusHistory || []), { status, note, timestamp: new Date() }];
     if (status === 'delivered') order.deliveredAt = new Date();
+
+    const restaurantName = order.Restaurant?.name;
+    const messages = statusMessages(restaurantName);
+    if (messages[status]) {
+      notifyUser({
+        userId: order.userId,
+        type: 'order_update',
+        title: messages[status].title,
+        message: messages[status].message,
+        referenceId: order.id,
+      });
+    }
   }
   if (riderLocation) order.riderLocation = riderLocation;
 
